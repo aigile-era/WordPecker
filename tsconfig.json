@@ -2,12 +2,25 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "allowArbitraryExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],
+    "allowJs": true,
+    "jsx": "react-native",
     "noEmit": true,
-    "jsx": "react-native"
-  }
+    "isolatedModules": true,
+    "moduleResolution": "node16",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
