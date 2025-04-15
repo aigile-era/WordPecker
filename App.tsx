@@ -4,14 +4,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
 import HomeScreen from './src/screens/HomeScreen';
-import FeaturePlaceholder from './src/screens/placeholders/FeaturePlaceholder';
+import { WordListScreen } from './src/screens/WordListScreen';
+import { LearningScreen } from './src/screens/LearningScreen';
+import { QuizScreen } from './src/screens/QuizScreen';
+import { ProfileScreen } from './src/screens/ProfileScreen';
 import { AuthProvider } from './src/context/AuthContext';
 import theme from './src/styles/theme';
 
 // Define the navigator parameters
 type RootStackParamList = {
   Home: undefined;
-  FeaturePlaceholder: { featureId: number; featureName: string; description: string };
+  WordList: undefined;
+  Learning: undefined;
+  Quiz: undefined;
+  Profile: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -60,7 +66,6 @@ function App(): JSX.Element {
                   backgroundColor: '#1E293B',
                 },
                 headerTintColor: '#FFFFFF',
-                // Sorun çözümü: headertitleStyle içindeki fontWeight kaldırıldı
                 headerTitleStyle: {
                   color: '#FFFFFF',
                 },
@@ -70,12 +75,27 @@ function App(): JSX.Element {
               <Stack.Screen
                 name="Home"
                 component={HomeScreen}
-                options={{ title: 'WordPecker Mobile Challenge' }}
+                options={{ title: 'WordPecker' }}
               />
               <Stack.Screen
-                name="FeaturePlaceholder"
-                component={FeaturePlaceholder}
-                options={({ route }) => ({ title: route.params.featureName })}
+                name="WordList"
+                component={WordListScreen}
+                options={{ title: 'Kelime Listeleri' }}
+              />
+              <Stack.Screen
+                name="Learning"
+                component={LearningScreen}
+                options={{ title: 'Öğrenme Modu' }}
+              />
+              <Stack.Screen
+                name="Quiz"
+                component={QuizScreen}
+                options={{ title: 'Sınav Modu' }}
+              />
+              <Stack.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{ title: 'Profil' }}
               />
             </Stack.Navigator>
           </SafeAreaView>
